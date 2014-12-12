@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "Prototype";
+    src: url('../fonts/Prototype.ttf');
+}
+h1 {
+	font-family: "Prototype";
+}
+*|*:-moz-any-link:focus {
+  outline: none;
+} 
+li { list-style-type: none; }
+
+.panel-primary {
+    border-color:#FF5558;
+	
+}
+.panel-primary > .panel-heading {
+    color: #FFF;
+    background-color: #FF5558;
+    border-color: #FF5558;
+}
+.panel-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: inherit;
+}
+#logo {
+    margin-top: 100px;
+}
+#mini-logo {
+    margin-top: -10px;
+}

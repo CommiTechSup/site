@@ -8,14 +8,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CommiTechSup</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>CommItechSup</title>
 
     <!-- Custom CSS -->
     <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet">
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">   
+    <!-- CSS Perso -->
+    <link href="bootstrap/css/style.css" rel="stylesheet">
 
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,12 +36,12 @@
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">CommItechSup</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">CommiTechSup</a>
+                <a class="navbar-brand page-scroll" href="#page-top"><div id="mini-logo"><img src="img/asso-mini.png" alt="CommItechSup"/></div></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -64,18 +66,41 @@
         </div>
         <!-- /.container -->
     </nav>
-	<hr>
     <!-- Intro Section -->
     <section id="section-1" class="intro-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>CommiTechSup</h1>
+                    <h1 id="logo"><img src="img/asso.png" alt="CommItechSup"/></h1>
+					
+					<div class="panel panel-primary col-lg-3">
+						<div class="panel-heading">
+							<h3 class="panel-title">A propos</h3>
+						</div>
+						<div class="panel-body">
+							<p>
+								CommItechSup est l'association qui représente tous les étudiants en formation d'Expert en Ingénierie Informatique issus de l'ItechSup de Nantes.
+								Plusieurs événements seront proposés afin de vous lier les uns aux autres, et ainsi favoriser les échanges au delà de votre cursus.
+							</p>
+							<!--suivez nous sur Facebook et twitter-->
+							
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
+						</div>
+					</div>
+					<div class="panel panel-primary col-lg-3">
+						<div class="panel-heading">
+							<h3 class="panel-title">Autre Article</h3>
+						</div>
+						<div class="panel-body">
+							Contenu....
+							
+						</div>
+					</div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="section-2" class="about-section">
         <div class="container">
@@ -86,7 +111,6 @@
             </div>
         </div>
     </section>
-
     <!-- Services Section -->
     <section id="section-3" class="services-section">
         <div class="container">
@@ -97,27 +121,129 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="section-4" class="contact-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Contact</h1>
+                    <br /><br />
+                    <div class="row">	
+                         <!-- Alignment -->
+                        <div class="col-sm-offset-3 col-sm-6">
+                           <!-- Form itself -->
+                              <form name="sentMessage" id="contactForm"  novalidate>                           
+                                <legend>Vous avez des questions, des remarques ou des propositions? N'hésitez pas!</legend>
+                                  <br />
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="text" class="form-control" 
+                                       placeholder="Nom" id="name" required
+                                           data-validation-required-message="S'il vous plaît, entrer votre nom" maxlength="100" /> 
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div> 	
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="email" class="form-control" placeholder="Email" 
+                                                id="email" required
+                                           data-validation-required-message="S'il vous plaît, entrer votre adresse mail" />
+                                        <p class="help-block align-right"></p>
+                                    </div>
+                                </div> 	
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <textarea rows="10" cols="100" class="form-control" 
+                                           placeholder="Message" id="message" required
+                                   data-validation-required-message="S'il vous plaît, entrer un sujet pour votre message" minlength="5" 
+                                           data-validation-minlength-message="Minimum 5 caractères" 
+                                            maxlength="999" style="resize:none"></textarea>
+                                    </div>
+                                </div> 		 
+                                <div id="success"> </div> <!-- For success/fail messages -->
+                                <br />
+                                <button type="submit" class="btn btn-primary pull-right">Envoyer</button><br />
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+	
+	<!-- Modal -->
+	<!--Présentation association-->
+	
+
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<h3>CommItechSup</h3>
+				<div>
+					<h4>Quelle est cette association ?</h4>
+					<p>CommItechSup est  une association loi 1901, 
+						à but non lucratif fondée dans le but de favoriser la cohésion entre tous les étudiants Expert en Ingénierie Informatique
+						suivant cette formation à l’école ItechSup de Nantes.
+					</p>
+					<h4>Quels sont ses objectifs ?</h4>
+					<p>CommItech fournit des services et des activités à tous les étudiants qui décident d’adhérer à l’association. 
+						Les membres de l’association font leur maximum pour favoriser les échanges  entre les différentes promotions 
+						afin d’aider les étudiants à construire leur réseau.
+					</p>
+					<h4>Que signifie être membre ?</h4>
+					<p>Adhérer à CommItechSup permet de s’engager dans la vie associative de l’ItechSup. 
+						Ceci implique de s’acquitter d’une cotisation annuelle, fixée lors de l’Assemblée Générale, 
+						pour s’octroyer les droits d’utiliser les services et activités de l’association.
+					</p>
+					
+					<h4>Par qui est-elle administrée ?</h4>
+					<p>Par des bénévoles, vous et nous !</br>
+						Etant une association d’étudiants, vous avez en devenant adhérent votre mots à dire, la possibilité d’exposer vos idées, 
+						le droit de participer au suffrage. Le bureau est instauré lors des Assemblée Générale.
+					</p>
+					<h4>Quelles sont ses activités et services ?</h4>
+					<p>CommItechSup assure:</p>
+						<ul>
+							<li><p>* la gestion de l’annuaire des anciens étudiants.</p></li>
+							<li><p>* L’administration d’un forum d’entraide et d’échanges.</p></li>
+							<li><p>* L’Organisations d’événements.</p></li>
+						</ul>
+					<h4>Le Comité de direction est composé de:</h4>
+					<ul>
+						<li><strong>Un Président : </strong>non élu pour le moment</li>
+						<li><strong>Un Trésorier : </strong>non élu pour le moment</li>
+						<li><strong>Un Secrétaire : </strong>non élu pour le moment</li>
+					</ul>
+					
+					<!--
+					<button class="md-close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					
+					<button class="md-close">Fermer</button>
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
 
     <!-- jQuery -->
     <script src="bootstrap/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     <!-- Scrolling Nav JavaScript -->
     <script src="bootstrap/js/jquery.easing.min.js"></script>
     <script src="bootstrap/js/scrolling-nav.js"></script>
+
+	<!-- Form -->
+    <script src="bootstrap/js/jqBootstrapValidation.js"></script>
+    <script src="bootstrap/js/contact_me.js"></script>
+    
+    <!--Modal-->
+	<script src="bootstrap/js/modalEffects.js"></script>
+	<script src="bootstrap/js/classie.js"></script>
+    
 
 </body>
 
