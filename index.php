@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -16,7 +15,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">   
     <!-- CSS Perso -->
     <link href="bootstrap/css/style.css" rel="stylesheet">
-
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,6 +27,16 @@
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
+<?php 
+    require_once('class/connexion.class.php');
+    require_once('class/actualites.class.php');
+    require_once('class/evenements.class.php');
+
+    $connexion = new Connexion();
+    $actualites = new Actualites($connexion->getConnexion());
+    $evenements = new Evenements($connexion->getConnexion());
+
+?>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
@@ -52,10 +60,10 @@
                         <a class="page-scroll" href="#section-1"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#section-2">Evénements</a>
+                        <a class="page-scroll" href="#section-2">Actualités</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#section-3">Actualités</a>
+                        <a class="page-scroll" href="#section-3">Evénements</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#section-4">Contact</a>
@@ -72,52 +80,65 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 id="logo"><img src="img/asso.png" alt="CommItechSup"/></h1>
-					
-					<div class="panel panel-primary col-lg-3">
-						<div class="panel-heading">
-							<h3 class="panel-title">A propos</h3>
-						</div>
-						<div class="panel-body">
-							<p>
-								CommItechSup est l'association qui représente tous les étudiants en formation d'Expert en Ingénierie Informatique issus de l'ItechSup de Nantes.
-								Plusieurs événements seront proposés afin de vous lier les uns aux autres, et ainsi favoriser les échanges au delà de votre cursus.
-							</p>
-							<!--suivez nous sur Facebook et twitter-->
-							
-							<!-- Button trigger modal -->
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
-						</div>
-					</div>
-					<div class="panel panel-primary col-lg-3">
-						<div class="panel-heading">
-							<h3 class="panel-title">Autre Article</h3>
-						</div>
-						<div class="panel-body">
-							Contenu....
-							
-						</div>
-					</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section -->
+				</div>
+			</div>			
+		</div>
+	</section>
+    <!--Section Evenements -->
     <section id="section-2" class="about-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Evénements</h1>
-                </div>
+                    <h1>Actualités</h1>
+                    <?php 
+                    foreach ($actualites->getActualites() as $key => $value) {
+                        echo '<div class="panel panel-primary col-lg-3 COM-'.$value['post_id'].'">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">'.$value['post_subject'].'</h3>
+                                    </div>
+                                    <div class="panel-body">'.$actualites->resum($value['post_text'],280).'</div>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
+                                </div>';
+                        echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <h3 class="modal-title">' . $value['post_subject'] . ' </h3>
+                                            <p class="modal-text">'.$value['post_text'].'</p>
+                                        </div>
+                                    </div>
+                                </div>';
+                    }
+                ?>
+				</div>
             </div>
         </div>
     </section>
-    <!-- Services Section -->
+    <!-- Section  Actu -->
     <section id="section-3" class="services-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Actualités</h1>
-                </div>
+                    <h1>Evénements</h1>
+                    <?php 
+                    foreach ($evenements->getEvenements() as $key => $value) {
+                        echo '<div class="panel panel-primary col-lg-3 COM-'.$value['post_id'].'">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">'.$value['post_subject'].'</h3>
+                                    </div>
+                                    <div class="panel-body">'.$evenements->resum($value['post_text'],280).'</div>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
+                                </div>';
+                        echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <h3 class="modal-title">' . $value['post_subject'] . ' </h3>
+                                            <p class="modal-text">'.$value['post_text'].'</p>
+                                        </div>
+                                    </div>
+                                </div>';
+                    }
+                ?>
+				</div>
             </div>
         </div>
     </section>
@@ -132,7 +153,7 @@
                          <!-- Alignment -->
                         <div class="col-sm-offset-3 col-sm-6">
                            <!-- Form itself -->
-                              <form name="sentMessage" id="contactForm"  novalidate>                           
+                              <form name="sentMessage" id="contactForm"  method="POST" novalidate>                           
                                 <legend>Vous avez des questions, des remarques ou des propositions? N'hésitez pas!</legend>
                                   <br />
                                 <div class="control-group">
@@ -160,10 +181,12 @@
                                            data-validation-minlength-message="Minimum 5 caractères" 
                                             maxlength="999" style="resize:none"></textarea>
                                     </div>
-                                </div> 		 
+                                </div> 	
+								
                                 <div id="success"> </div> <!-- For success/fail messages -->
                                 <br />
-                                <button type="submit" class="btn btn-primary pull-right">Envoyer</button><br />
+								
+                                <button type="submit" value="submit" class="btn btn-primary pull-right">Envoyer</button><br />
                             </form>
                         </div>
                     </div>
@@ -172,59 +195,7 @@
         </div>
     </section>
 	
-	<!-- Modal -->
-	<!--Présentation association-->
-	
 
-	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<h3>CommItechSup</h3>
-				<div>
-					<h4>Quelle est cette association ?</h4>
-					<p>CommItechSup est  une association loi 1901, 
-						à but non lucratif fondée dans le but de favoriser la cohésion entre tous les étudiants Expert en Ingénierie Informatique
-						suivant cette formation à l’école ItechSup de Nantes.
-					</p>
-					<h4>Quels sont ses objectifs ?</h4>
-					<p>CommItech fournit des services et des activités à tous les étudiants qui décident d’adhérer à l’association. 
-						Les membres de l’association font leur maximum pour favoriser les échanges  entre les différentes promotions 
-						afin d’aider les étudiants à construire leur réseau.
-					</p>
-					<h4>Que signifie être membre ?</h4>
-					<p>Adhérer à CommItechSup permet de s’engager dans la vie associative de l’ItechSup. 
-						Ceci implique de s’acquitter d’une cotisation annuelle, fixée lors de l’Assemblée Générale, 
-						pour s’octroyer les droits d’utiliser les services et activités de l’association.
-					</p>
-					
-					<h4>Par qui est-elle administrée ?</h4>
-					<p>Par des bénévoles, vous et nous !</br>
-						Etant une association d’étudiants, vous avez en devenant adhérent votre mots à dire, la possibilité d’exposer vos idées, 
-						le droit de participer au suffrage. Le bureau est instauré lors des Assemblée Générale.
-					</p>
-					<h4>Quelles sont ses activités et services ?</h4>
-					<p>CommItechSup assure:</p>
-						<ul>
-							<li><p>* la gestion de l’annuaire des anciens étudiants.</p></li>
-							<li><p>* L’administration d’un forum d’entraide et d’échanges.</p></li>
-							<li><p>* L’Organisations d’événements.</p></li>
-						</ul>
-					<h4>Le Comité de direction est composé de:</h4>
-					<ul>
-						<li><strong>Un Président : </strong>non élu pour le moment</li>
-						<li><strong>Un Trésorier : </strong>non élu pour le moment</li>
-						<li><strong>Un Secrétaire : </strong>non élu pour le moment</li>
-					</ul>
-					
-					<!--
-					<button class="md-close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					
-					<button class="md-close">Fermer</button>
-					-->
-				</div>
-			</div>
-		</div>
-	</div>
 
     <!-- jQuery -->
     <script src="bootstrap/js/jquery.js"></script>
@@ -244,6 +215,9 @@
 	<script src="bootstrap/js/modalEffects.js"></script>
 	<script src="bootstrap/js/classie.js"></script>
     
+	<!--ReCaptcha-->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 </body>
 

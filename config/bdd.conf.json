@@ -1,0 +1,10 @@
+{
+	"bdd":
+	{
+		"host":"localhost",
+		"driver":"mysql",
+		"user":"root",
+		"password":"root",
+		"database":"commitecdvad"
+	}
+}

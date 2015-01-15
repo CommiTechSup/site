@@ -4,20 +4,22 @@
 }
 h1 {
 	font-family: "Prototype";
+	padding: 0px 0px 30px;
 }
+
 *|*:-moz-any-link:focus {
   outline: none;
 } 
-li { list-style-type: none; }
-
+li { list-style-type: none; 
+}
 .panel-primary {
-    border-color:#FF5558;
+    border-color:#FF292F;
 	
 }
 .panel-primary > .panel-heading {
     color: #FFF;
-    background-color: #FF5558;
-    border-color: #FF5558;
+    background-color: #FF292F;
+    border-color: #FF292F;
 }
 .panel-title {
     margin-top: 0px;
@@ -31,3 +33,51 @@ li { list-style-type: none; }
 #mini-logo {
     margin-top: -10px;
 }
+.info {
+position: relative;
+min-height: 1px;
+padding: 10 px;
+}
+.btn-primary, .btn-primary:focus{
+color: #fff;
+background-color: #FF292F;
+border-color: #FF292F;
+}
+h3, .h3 {
+font-size: 35px;
+color: #FF5558;
+text-align: center;
+}
+.modal-in{
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+h4, .h4 {
+font-size: 18px;
+padding-left: 18px;
+color: #FF5558;
+}
+.btn-primary:hover, .btn-primary:active{
+color: #FF292F;
+background-color: #FFF;
+border-color: #FF292F;
+}
+img{
+margin-bottom: 50px;
+}
+.COM-1{
+border-color: #FF292F;
+}
+
+
+
+
+
+
+
+
+
+
+
