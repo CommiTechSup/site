@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta charset="utf-8">
 
     <title>CommItechSup</title>
 
     <!-- Custom CSS -->
     <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet">
-	 <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">   
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">   
     <!-- CSS Perso -->
     <link href="bootstrap/css/style.css" rel="stylesheet">
-	
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -80,10 +81,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 id="logo"><img src="img/asso.png" alt="CommItechSup"/></h1>
-				</div>
-			</div>			
-		</div>
-	</section>
+                </div>
+            </div>          
+        </div>
+    </section>
     <!--Section Evenements -->
     <section id="section-2" class="about-section">
         <div class="container">
@@ -94,22 +95,22 @@
                     foreach ($actualites->getActualites() as $key => $value) {
                         echo '<div class="panel panel-primary col-lg-3 COM-'.$value['post_id'].'">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">'.$value['post_subject'].'</h3>
+                                        <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
                                     </div>
-                                    <div class="panel-body">'.$actualites->resum($value['post_text'],280).'</div>
+                                    <div class="panel-body">'.utf8_encode($actualites->resum($value['post_text'],280)).'</div>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
                                 </div>';
                         echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
-                                            <h3 class="modal-title">' . $value['post_subject'] . ' </h3>
-                                            <p class="modal-text">'.$value['post_text'].'</p>
+                                            <h3 class="modal-title">' . utf8_encode($value['post_subject']) . ' </h3>
+                                            <p class="modal-text">'.utf8_encode($value['post_text']).'</p>
                                         </div>
                                     </div>
                                 </div>';
                     }
                 ?>
-				</div>
+                </div>
             </div>
         </div>
     </section>
@@ -123,22 +124,22 @@
                     foreach ($evenements->getEvenements() as $key => $value) {
                         echo '<div class="panel panel-primary col-lg-3 COM-'.$value['post_id'].'">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">'.$value['post_subject'].'</h3>
+                                        <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
                                     </div>
-                                    <div class="panel-body">'.$evenements->resum($value['post_text'],280).'</div>
+                                    <div class="panel-body">'.utf8_encode($evenements->resum($value['post_text'],280)).'</div>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
                                 </div>';
                         echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
-                                            <h3 class="modal-title">' . $value['post_subject'] . ' </h3>
-                                            <p class="modal-text">'.$value['post_text'].'</p>
+                                            <h3 class="modal-title">' . utf8_encode($value['post_subject']) . ' </h3>
+                                            <p class="modal-text">'.utf8_encode($value['post_text']).'</p>
                                         </div>
                                     </div>
                                 </div>';
                     }
                 ?>
-				</div>
+                </div>
             </div>
         </div>
     </section>
@@ -149,7 +150,7 @@
                 <div class="col-lg-12">
                     <h1>Contact</h1>
                     <br /><br />
-                    <div class="row">	
+                    <div class="row">   
                          <!-- Alignment -->
                         <div class="col-sm-offset-3 col-sm-6">
                            <!-- Form itself -->
@@ -163,7 +164,7 @@
                                            data-validation-required-message="S'il vous plaît, entrer votre nom" maxlength="100" /> 
                                         <p class="help-block"></p>
                                     </div>
-                                </div> 	
+                                </div>  
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="email" class="form-control" placeholder="Email" 
@@ -171,7 +172,7 @@
                                            data-validation-required-message="S'il vous plaît, entrer votre adresse mail" />
                                         <p class="help-block align-right"></p>
                                     </div>
-                                </div> 	
+                                </div>  
 
                                 <div class="control-group">
                                     <div class="controls">
@@ -181,11 +182,11 @@
                                            data-validation-minlength-message="Minimum 5 caractères" 
                                             maxlength="999" style="resize:none"></textarea>
                                     </div>
-                                </div> 	
-								
+                                </div>  
+                                
                                 <div id="success"> </div> <!-- For success/fail messages -->
                                 <br />
-								
+                                
                                 <button type="submit" value="submit" class="btn btn-primary pull-right">Envoyer</button><br />
                             </form>
                         </div>
@@ -194,7 +195,7 @@
             </div>
         </div>
     </section>
-	
+    
 
 
     <!-- jQuery -->
@@ -207,16 +208,16 @@
     <script src="bootstrap/js/jquery.easing.min.js"></script>
     <script src="bootstrap/js/scrolling-nav.js"></script>
 
-	<!-- Form -->
+    <!-- Form -->
     <script src="bootstrap/js/jqBootstrapValidation.js"></script>
     <script src="bootstrap/js/contact_me.js"></script>
     
     <!--Modal-->
-	<script src="bootstrap/js/modalEffects.js"></script>
-	<script src="bootstrap/js/classie.js"></script>
+    <script src="bootstrap/js/modalEffects.js"></script>
+    <script src="bootstrap/js/classie.js"></script>
     
-	<!--ReCaptcha-->
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!--ReCaptcha-->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 </body>
