@@ -41,7 +41,6 @@ git clone https://github.com/CommiTechSup/site.git
 
 --------------------------------------
 
-**Edited on : **[http://dillinger.io/]
 
 [Bootstrap]:http://getbootstrap.com/
 [jQuery]:http://jquery.com
