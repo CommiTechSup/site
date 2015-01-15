@@ -1,4 +1,4 @@
-Comitechsup
+Commitechsup
 =========
 
 Site de l'association des élèves de l'école ItechSup de Nantes
