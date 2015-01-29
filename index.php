@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta charset="utf-8">
-
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>CommItechSup</title>
 
     <!-- Custom CSS -->
