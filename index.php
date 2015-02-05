@@ -90,16 +90,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Actualités</h1>
+                    <h1>Actualitéshh</h1>
                     <?php 
                     foreach ($actualites->getActualites() as $key => $value) {
-                        echo '<div class="panel panel-primary col-lg-3 COM-'.$value['post_id'].'">
+                        echo '<div class="col-lg-3 info"><div class="panel panel-primary COM-'.$value['post_id'].'">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
                                     </div>
                                     <div class="panel-body">'.utf8_encode($actualites->resum($value['post_text'],280)).'</div>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
-                                </div>';
+                                </div></div>';
                         echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -122,13 +122,13 @@
                     <h1>Evénements</h1>
                     <?php 
                     foreach ($evenements->getEvenements() as $key => $value) {
-                        echo '<div class="panel panel-primary col-lg-3 COM-'.$value['post_id'].'">
+                        echo '<div class="col-lg-3 info"><div class="panel panel-primary COM-'.$value['post_id'].'">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
                                     </div>
                                     <div class="panel-body">'.utf8_encode($evenements->resum($value['post_text'],280)).'</div>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
-                                </div>';
+                                </div></div>';
                         echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
