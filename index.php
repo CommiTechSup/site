@@ -13,7 +13,7 @@
     <!-- Custom CSS -->
     <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet">
      <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">   
     <!-- CSS Perso -->
     <link href="bootstrap/css/style.css" rel="stylesheet">
     
@@ -90,7 +90,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Actualitéshh</h1>
+                    <h1>Actualités</h1>
                     <?php 
                     foreach ($actualites->getActualites() as $key => $value) {
                         echo '<div class="col-lg-3 info"><div class="panel panel-primary COM-'.$value['post_id'].'">
@@ -202,7 +202,7 @@
     <script src="bootstrap/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Scrolling Nav JavaScript -->
     <script src="bootstrap/js/jquery.easing.min.js"></script>
