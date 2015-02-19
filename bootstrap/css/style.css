@@ -72,7 +72,11 @@ border-color: #FF292F;
 }
 
 
-
+.resum{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 210px;
+}
 
 
 

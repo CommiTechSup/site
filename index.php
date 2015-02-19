@@ -32,14 +32,25 @@
     require_once('class/connexion.class.php');
     require_once('class/actualites.class.php');
     require_once('class/evenements.class.php');
+    define('IN_PHPBB', true);
+    $phpbb_root_path = 'forum/';
+    $phpEx = "php";
+    include($phpbb_root_path . 'common.' . $phpEx);
+    include($phpbb_root_path . 'includes/bbcode.' . $phpEx);
+    include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
+
+    $uid = $bitfield = $options = '';
 
     $connexion = new Connexion();
     $actualites = new Actualites($connexion->getConnexion());
     $evenements = new Evenements($connexion->getConnexion());
 
+    $user->session_begin();
+    $auth->acl($user->data);
+    $user->setup('viewforum');
+
 ?>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -97,17 +108,18 @@
                                     <div class="panel-heading">
                                         <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
                                     </div>
-                                    <div class="panel-body">'.utf8_encode($actualites->resum($value['post_text'],280)).'</div>
+                                    <div class="panel-body resum">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</div>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
                                 </div></div>';
                         echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <h3 class="modal-title">' . utf8_encode($value['post_subject']) . ' </h3>
-                                            <p class="modal-text">'.utf8_encode($value['post_text']).'</p>
+                                            <p class="modal-text">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</p>
                                         </div>
                                     </div>
                                 </div>';
+
                     }
                 ?>
                 </div>
@@ -126,14 +138,14 @@
                                     <div class="panel-heading">
                                         <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
                                     </div>
-                                    <div class="panel-body">'.utf8_encode($evenements->resum($value['post_text'],280)).'</div>
+                                    <div class="panel-body resum">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</div>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
                                 </div></div>';
                         echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <h3 class="modal-title">' . utf8_encode($value['post_subject']) . ' </h3>
-                                            <p class="modal-text">'.utf8_encode($value['post_text']).'</p>
+                                            <p class="modal-text">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</p>
                                         </div>
                                     </div>
                                 </div>';

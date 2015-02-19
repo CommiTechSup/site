@@ -28,13 +28,4 @@ class Actualites{
         return $chaine;
     }
 
-
-
-
-
-
-
-
-
-
 }
