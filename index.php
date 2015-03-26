@@ -30,25 +30,10 @@
 
 <?php 
     require_once('class/connexion.class.php');
-    require_once('class/actualites.class.php');
-    require_once('class/evenements.class.php');
-    define('IN_PHPBB', true);
-    $phpbb_root_path = 'forum/';
-    $phpEx = "php";
-    include($phpbb_root_path . 'common.' . $phpEx);
-    include($phpbb_root_path . 'includes/bbcode.' . $phpEx);
-    include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
-
-    $uid = $bitfield = $options = '';
+    require_once('class/news.class.php');
 
     $connexion = new Connexion();
-    $actualites = new Actualites($connexion->getConnexion());
-    $evenements = new Evenements($connexion->getConnexion());
-
-    $user->session_begin();
-    $auth->acl($user->data);
-    $user->setup('viewforum');
-
+    $news = new News($connexion->getConnexion());
 ?>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <!-- Navigation -->
@@ -102,26 +87,36 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Actualités</h1>
+                    <div class="news-cont">
                     <?php 
-                    foreach ($actualites->getActualites() as $key => $value) {
-                        echo '<div class="col-lg-3 info"><div class="panel panel-primary COM-'.$value['post_id'].'">
+                    foreach ($news->getLastActu() as $key => $value) {
+                        echo '<div class="col-lg-3 info">
+                                <div class="panel panel-primary COM-'.$value['id_article'].'">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
+                                        <h3 class="panel-title">'.($value['title']).'</h3>
                                     </div>
-                                    <div class="panel-body resum">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</div>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
-                                </div></div>';
-                        echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="panel-body resum">
+                                        <div class="summary">
+                                        '.($value['content']).
+                                        '</div>
+                                        <div class="readmore">
+                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['id_article'].'">+</button>
+                                        </div>
+                                    </div>  
+                                </div>   
+                            </div>';
+                        echo '<div class="modal fade bs-example-modal-lg_'.$value['id_article'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <h3 class="modal-title">' . utf8_encode($value['post_subject']) . ' </h3>
-                                            <p class="modal-text">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</p>
+                                        <div class="modal-content news">
+                                            <h3 class="modal-title">' . ($value['title']) . ' </h3>
+                                            <p class="modal-text">'.($value['content']).'</p>
                                         </div>
                                     </div>
                                 </div>';
 
                     }
                 ?>
+                </div>
                 </div>
             </div>
         </div>
@@ -132,25 +127,36 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Evénements</h1>
+                    <div class="news-cont">
                     <?php 
-                    foreach ($evenements->getEvenements() as $key => $value) {
-                        echo '<div class="col-lg-3 info"><div class="panel panel-primary COM-'.$value['post_id'].'">
+                    foreach ($news->getLastEvent() as $key => $value) {
+                        echo '<div class="col-lg-3 info">
+                                <div class="panel panel-primary COM-'.$value['id_article'].'">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">'.utf8_encode($value['post_subject']).'</h3>
+                                        <h3 class="panel-title">'.($value['title']).'</h3>
                                     </div>
-                                    <div class="panel-body resum">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</div>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['post_id'].'">+</button>
-                                </div></div>';
-                        echo '<div class="modal fade bs-example-modal-lg_'.$value['post_id'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="panel-body resum">
+                                        <div class="summary">
+                                        '.($value['content']).
+                                        '</div>
+                                        <div class="readmore">
+                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg_'.$value['id_article'].'">+</button>
+                                        </div>
+                                    </div>  
+                                </div>   
+                            </div>';
+                        echo '<div class="modal fade bs-example-modal-lg_'.$value['id_article'].'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <h3 class="modal-title">' . utf8_encode($value['post_subject']) . ' </h3>
-                                            <p class="modal-text">'.utf8_encode(generate_text_for_display($value['post_text'], $value['bbcode_uid'], $value['bbcode_bitfield'], OPTION_FLAG_BBCODE)).'</p>
+                                        <div class="modal-content news">
+                                            <h3 class="modal-title">' . ($value['title']) . ' </h3>
+                                            <p class="modal-text">'.($value['content']).'</p>
                                         </div>
                                     </div>
                                 </div>';
+
                     }
                 ?>
+                </div>
                 </div>
             </div>
         </div>
@@ -230,7 +236,21 @@
     
     <!--ReCaptcha-->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+    <script type="text/javascript">
+      $( 'img' ).each(function(){
+        var style =  $( this ).attr('style');
+        var styles = "";
+        var split = style.split('; ');
+        $.each( split, function( key, value ) {
+         if(value.match("^height") || value.match("^width")){
+          }else{
+            styles = styles+value+'; ';
+          }
+        });
+        $(this).attr("style", styles);
+      })
+       
+      </script>
 
 </body>
 

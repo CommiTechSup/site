@@ -6,7 +6,7 @@ Site de l'association des élèves de l'école ItechSup de Nantes
 Version
 ----
 
-1.0
+1.1.0
 
 Tech
 -----------
@@ -16,6 +16,7 @@ The site uses a number of open source projects to work properly:
 
 * [Bootstrap] - great UI boilerplate for modern web apps
 * [jQuery] - duh 
+* [CKEdidor] - web text editor
 
 Server requirements
 -------------------
@@ -44,3 +45,4 @@ git clone https://github.com/CommiTechSup/site.git
 
 [Bootstrap]:http://getbootstrap.com/
 [jQuery]:http://jquery.com
+[CKEdidor]:http://ckeditor.com/
